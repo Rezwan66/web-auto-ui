@@ -13,15 +13,15 @@ const FormFilling = () => {
     <>
       <div>
         {/* <h2> HELLO I Am FormFilling </h2> */}
-        <div className="hero bg-base-200 min-h-screen relative">
+        <div className="hero bg-transparent min-h-screen relative">
           {/* Background with opacity control */}
-          <div
+          {/* <div
             className="absolute bg-cover bg-center inset-0 opacity-85"
             style={{
               backgroundImage:
                 'url(https://images.unsplash.com/photo-1645839057098-5ea8761a6b09?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
             }}
-          ></div>
+          ></div> */}
           {/* Content container */}
           <div className="hero-content flex-col lg:flex-row gap-10 z-10">
             {/* text */}
@@ -54,7 +54,7 @@ const FormFilling = () => {
 
                   <button
                     type="submit"
-                    className="btn btn-warning mt-4 group-hover:btn-neutral group-hover:scale-105"
+                    className="btn btn-warning mt-4 group-hover:btn-neutral group-hover:scale-105 tracking-widest capitalize"
                   >
                     Post
                   </button>

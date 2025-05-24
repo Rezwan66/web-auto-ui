@@ -2,3 +2,13 @@
 @plugin "daisyui" {
   themes: light --default, corporate;
 }
+form label {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.btn.capitalize {
+  text-transform: capitalize !important;
+}

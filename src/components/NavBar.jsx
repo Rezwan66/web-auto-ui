@@ -25,7 +25,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 opacity-100 shadow-sm">
+    <div className="navbar bg-base-100 opacity-100 shadow-sm rounded-full">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -52,13 +52,15 @@ const NavBar = () => {
             {navItems}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Web Automation with LLMs</a>
+        <a className="btn btn-ghost text-xl rounded-full">
+          Web Automation with LLMs
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <button onClick={handleLogin} className="btn">
+        <button onClick={handleLogin} className="btn rounded-full">
           <Link to="/login">Login</Link>
         </button>
       </div>
