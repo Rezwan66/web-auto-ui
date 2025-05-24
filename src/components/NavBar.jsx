@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
+  const handleLogin = () => {
+    // Add your login logic here
+    console.log('Login button clicked');
+  };
   const navItems = (
     <>
       <li>
         <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
       </li>
       <li>
         <Link to="/form">Form Fill</Link>
@@ -57,7 +58,9 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <button onClick={handleLogin} className="btn">
+          <Link to="/login">Login</Link>
+        </button>
       </div>
     </div>
   );
