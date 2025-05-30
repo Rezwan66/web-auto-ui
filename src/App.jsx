@@ -7,6 +7,7 @@ import ShoppingCheckout from './pages/ShoppingCheckout';
 import ResponsiveValidation from './pages/ResponsiveValidation';
 import EdgeCaseTesting from './pages/EdgeCaseTesting';
 import NavBar from './components/NavBar';
+import InstructionForm from './components/InstructionForm';
 function App() {
   return (
     <Router>
@@ -24,6 +25,7 @@ function App() {
           <NavBar />
         </nav>
         <div className="divider divider-info"></div>
+        <InstructionForm />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginWorkflow />} />

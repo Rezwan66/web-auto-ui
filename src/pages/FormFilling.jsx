@@ -1,5 +1,8 @@
+import { useEffect } from 'react';
+import { getFormData, submitForm } from '../api';
+
 const FormFilling = () => {
-  const handlePostStory = e => {
+  const handlePostStory = async e => {
     e.preventDefault();
     const title = e.target.title.value;
     const details = e.target.details.value;
@@ -7,8 +10,28 @@ const FormFilling = () => {
       title,
       details,
     };
-    console.log('submitted', postData);
+    // console.log('submitted', postData);
+
+    try {
+      const response = await submitForm(postData);
+      console.log('Backend Response:', response?.received, response?.status);
+      alert(`Success: ${JSON.stringify(response?.received)}`);
+    } catch (error) {
+      console.log('Error posting story: ', error);
+    }
   };
+  useEffect(() => {
+    // Optionally fetch data from GET endpoint when component mounts
+    const fetchData = async () => {
+      try {
+        const data = await getFormData();
+        console.log('GET data from backend:', data);
+      } catch (err) {
+        console.error('Error fetching data:', err);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <>
       <div>
