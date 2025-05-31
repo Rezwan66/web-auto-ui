@@ -19,7 +19,7 @@ export const generateScript = async prompt => {
 
 export const submitForm = async formData => {
   try {
-    const response = await API.post('/submit-form', formData);
+    const response = await API.post('/formfill/submit-form', formData);
     return response.data;
   } catch (error) {
     console.error('Error submitting form:', error);
@@ -29,7 +29,7 @@ export const submitForm = async formData => {
 
 export const getFormData = async () => {
   try {
-    const response = await API.get('/get-form-data');
+    const response = await API.get('/formfill/get-form-data');
     return response.data;
   } catch (error) {
     console.error('Error fetching form data:', error);

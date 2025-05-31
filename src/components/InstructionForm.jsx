@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import { generateScript } from '../api';
+import CodeViewer from './CodeViewer';
 
 const InstructionForm = () => {
+  const [generatedCode, setGeneratedCode] = useState('');
   const handleAskLLM = async e => {
     e.preventDefault();
     const promptText = e.target.promptText.value;
     // console.log(promptText);
     try {
       const response = await generateScript(promptText);
-      console.log('LLM Response:', response);
+      setGeneratedCode(response?.response);
+      console.log('LLM Response:', response.response);
     } catch (error) {
       console.log('Error: ', error);
     }
@@ -47,6 +51,7 @@ const InstructionForm = () => {
                 </button>
               </div>
             </form>
+            {generatedCode && <CodeViewer codeText={generatedCode} />}
             <div className="modal-action">
               <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}
