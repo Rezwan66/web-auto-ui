@@ -8,6 +8,7 @@ import ResponsiveValidation from './pages/ResponsiveValidation';
 import EdgeCaseTesting from './pages/EdgeCaseTesting';
 import NavBar from './components/NavBar';
 import InstructionForm from './components/InstructionForm';
+import { fillAndSubmitForm } from './utils/TestJSAutomation';
 function App() {
   return (
     <Router>
@@ -26,6 +27,15 @@ function App() {
         </nav>
         <div className="divider divider-info"></div>
         <InstructionForm />
+        <button
+          className="btn btn-error inline"
+          onClick={() => {
+            fillAndSubmitForm();
+            // handlePostStory;
+          }}
+        >
+          Do some automation
+        </button>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginWorkflow />} />

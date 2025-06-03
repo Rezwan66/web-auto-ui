@@ -6,7 +6,18 @@ const API = axios.create({
 });
 
 // API Functions
-export const generateScript = async prompt => {
+export const generateScriptOllama = async prompt => {
+  try {
+    console.log(prompt);
+    const { data } = await API.post('/llm/generate', { prompt });
+    console.log(data);
+    return data; // { response: "<generated code>" }
+  } catch (error) {
+    console.error('Error generating script:', error);
+    throw error;
+  }
+};
+export const generateScriptHTTPX = async prompt => {
   try {
     console.log({ prompt });
     const response = await API.post('/llm/generate-llm', { prompt });

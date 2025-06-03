@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { getFormData, submitForm } from '../api';
+import { fillAndSubmitForm } from '../utils/TestJSAutomation';
 
 const FormFilling = () => {
   const handlePostStory = async e => {
@@ -20,23 +21,24 @@ const FormFilling = () => {
       console.log('Error posting story: ', error);
     }
   };
-  useEffect(() => {
-    // Optionally fetch data from GET endpoint when component mounts
-    const fetchData = async () => {
-      try {
-        const data = await getFormData();
-        console.log('GET data from backend:', data);
-      } catch (err) {
-        console.error('Error fetching data:', err);
-      }
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   // Optionally fetch data from GET endpoint when component mounts
+  //   const fetchData = async () => {
+  //     try {
+  //       const data = await getFormData();
+  //       console.log('GET data from backend:', data);
+  //     } catch (err) {
+  //       console.error('Error fetching data:', err);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
   return (
     <>
       <div>
         {/* <h2> HELLO I Am FormFilling </h2> */}
-        <div className="hero bg-transparent min-h-screen relative">
+        <div className="hero bg-transparent mt-20 lg:mt-40 relative">
           {/* Background with opacity control */}
           {/* <div
             className="absolute bg-cover bg-center inset-0 opacity-85"
@@ -76,6 +78,7 @@ const FormFilling = () => {
                   />
 
                   <button
+                    id="postStoryButton"
                     type="submit"
                     className="btn btn-warning mt-4 group-hover:btn-neutral group-hover:scale-105 tracking-widest capitalize"
                   >
@@ -83,6 +86,15 @@ const FormFilling = () => {
                   </button>
                 </fieldset>
               </form>
+              <button
+                className="btn btn-accent"
+                onClick={() => {
+                  fillAndSubmitForm();
+                  // handlePostStory;
+                }}
+              >
+                Do some automation
+              </button>
             </div>
           </div>
         </div>
