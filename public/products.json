@@ -1,0 +1,108 @@
+[
+  {
+    "id": 1,
+    "name": "Earthen Bottle",
+    "href": "#",
+    "price": "$48",
+    "imageSrc": "https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-01.jpg",
+    "imageAlt": "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
+    "colors": [
+      { "id": "black", "name": "Black", "classes": "bg-gray-900" },
+      { "id": "white", "name": "White", "classes": "bg-white" }
+    ],
+    "sizes": [
+      { "name": "0.5L", "inStock": true },
+      { "name": "1L", "inStock": true },
+      { "name": "1.5L", "inStock": false }
+    ],
+    "rating": 4,
+    "reviewCount": 89
+  },
+  {
+    "id": 2,
+    "name": "Nomad Tumbler",
+    "href": "#",
+    "price": "$35",
+    "imageSrc": "https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-02.jpg",
+    "imageAlt": "Olive drab green insulated bottle with flared screw lid and flat top.",
+    "colors": [{ "id": "green", "name": "Green", "classes": "bg-green-700" }],
+    "sizes": [
+      { "name": "S", "inStock": true },
+      { "name": "M", "inStock": true },
+      { "name": "L", "inStock": true }
+    ],
+    "rating": 4.5,
+    "reviewCount": 42
+  },
+  {
+    "id": 3,
+    "name": "Focus Paper Refill",
+    "href": "#",
+    "price": "$89",
+    "imageSrc": "https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-03.jpg",
+    "imageAlt": "Person using a pen to cross a task off a productivity paper card.",
+    "colors": [],
+    "sizes": [
+      { "name": "Letter", "inStock": true },
+      { "name": "A4", "inStock": true }
+    ],
+    "rating": 5,
+    "reviewCount": 25
+  },
+  {
+    "id": 4,
+    "name": "Machined Mechanical Pencil",
+    "href": "#",
+    "price": "$35",
+    "imageSrc": "https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-04.jpg",
+    "imageAlt": "Hand holding black machined steel mechanical pencil with brass tip and top.",
+    "colors": [
+      { "id": "silver", "name": "Silver", "classes": "bg-gray-400" },
+      { "id": "gold", "name": "Gold", "classes": "bg-yellow-500" }
+    ],
+    "sizes": [
+      { "name": "0.3mm", "inStock": false },
+      { "name": "0.5mm", "inStock": true },
+      { "name": "0.7mm", "inStock": true }
+    ],
+    "rating": 4.2,
+    "reviewCount": 38
+  },
+  {
+    "id": 5,
+    "name": "Basic Tee 6-Pack",
+    "href": "#",
+    "price": "$192",
+    "imageSrc": "https://tailwindcss.com/plus-assets/img/ecommerce-images/product-quick-preview-02-detail.jpg",
+    "imageAlt": "Two each of gray, white, and black shirts arranged on table.",
+    "rating": 3.9,
+    "reviewCount": 117,
+    "colors": [
+      {
+        "id": "white",
+        "name": "White",
+        "classes": "bg-white checked:outline-gray-400"
+      },
+      {
+        "id": "gray",
+        "name": "Gray",
+        "classes": "bg-gray-200 checked:outline-gray-400"
+      },
+      {
+        "id": "black",
+        "name": "Black",
+        "classes": "bg-gray-900 checked:outline-gray-900"
+      }
+    ],
+    "sizes": [
+      { "name": "XXS", "inStock": true },
+      { "name": "XS", "inStock": true },
+      { "name": "S", "inStock": true },
+      { "name": "M", "inStock": true },
+      { "name": "L", "inStock": true },
+      { "name": "XL", "inStock": true },
+      { "name": "XXL", "inStock": true },
+      { "name": "XXXL", "inStock": false }
+    ]
+  }
+]

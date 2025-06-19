@@ -1,22 +1,28 @@
 import { useEffect } from 'react';
 import { getFormData, submitForm } from '../api';
 import { fillAndSubmitForm } from '../utils/TestJSAutomation';
+import toast from 'react-hot-toast';
 
 const FormFilling = () => {
   const handlePostStory = async e => {
     e.preventDefault();
+    const myForm = e.target;
     const title = e.target.title.value;
     const details = e.target.details.value;
     const postData = {
       title,
       details,
     };
-    // console.log('submitted', postData);
+    console.log('submitted', postData);
 
     try {
       const response = await submitForm(postData);
       console.log('Backend Response:', response?.received, response?.status);
-      alert(`Success: ${JSON.stringify(response?.received)}`);
+      // alert(`Success: ${JSON.stringify(response?.received)}`);
+      toast.success(
+        `Successfully posted: ${JSON.stringify(response?.received)}`
+      );
+      myForm.reset();
     } catch (error) {
       console.log('Error posting story: ', error);
     }
@@ -39,14 +45,6 @@ const FormFilling = () => {
       <div>
         {/* <h2> HELLO I Am FormFilling </h2> */}
         <div className="hero bg-transparent mt-20 lg:mt-40 relative">
-          {/* Background with opacity control */}
-          {/* <div
-            className="absolute bg-cover bg-center inset-0 opacity-85"
-            style={{
-              backgroundImage:
-                'url(https://images.unsplash.com/photo-1645839057098-5ea8761a6b09?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
-            }}
-          ></div> */}
           {/* Content container */}
           <div className="hero-content flex-col lg:flex-row gap-10 z-10">
             {/* text */}
@@ -66,21 +64,28 @@ const FormFilling = () => {
                   <input
                     type="text"
                     name="title"
-                    className="input"
+                    className="input w-full"
                     placeholder="Title of your story..."
                   />
+                  {/* story */}
                   <label className="label">Story</label>
-                  <input
+                  {/* <input
                     type="text"
                     name="details"
                     className="input"
                     placeholder="Details of your story..."
+                  /> */}
+                  <textarea
+                    name="details"
+                    className="textarea w-full"
+                    placeholder="Details of your story..."
+                    // rows={6}
                   />
-
+                  {/* submit button */}
                   <button
                     id="postStoryButton"
                     type="submit"
-                    className="btn btn-warning mt-4 group-hover:btn-neutral group-hover:scale-105 tracking-widest capitalize"
+                    className="btn btn-warning w-full mt-4 group-hover:btn-neutral group-hover:scale-105 tracking-widest capitalize"
                   >
                     Post
                   </button>

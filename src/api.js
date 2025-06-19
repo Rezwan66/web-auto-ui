@@ -5,7 +5,7 @@ const API = axios.create({
   baseURL: 'http://localhost:8000', // Replace with your backend URL in production
 });
 
-// API Functions
+// LLM Call API Functions
 export const generateScriptOllama = async prompt => {
   try {
     console.log(prompt);
@@ -28,6 +28,7 @@ export const generateScriptHTTPX = async prompt => {
   }
 };
 
+// form page API
 export const submitForm = async formData => {
   try {
     const response = await API.post('/formfill/submit-form', formData);
@@ -37,7 +38,6 @@ export const submitForm = async formData => {
     throw error;
   }
 };
-
 export const getFormData = async () => {
   try {
     const response = await API.get('/formfill/get-form-data');
@@ -46,4 +46,10 @@ export const getFormData = async () => {
     console.error('Error fetching form data:', error);
     throw error;
   }
+};
+
+// Test-automation run Python Code on Backend
+export const runPythonCode = async generatedCode => {
+  // Always return the Axios promise so the caller can catch errors
+  return API.post('/automation/run-python-code', { code: generatedCode });
 };

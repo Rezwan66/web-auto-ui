@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useBearStore } from '../hooks/Zustand';
+import { FaCartShopping } from 'react-icons/fa6';
 
 const NavBar = () => {
+  const productNumber = useBearStore(state => state.bears);
   const handleLogin = () => {
     // Add your login logic here
     console.log('Login button clicked');
@@ -14,6 +17,9 @@ const NavBar = () => {
         <Link to="/form">Form Fill</Link>
       </li>
       <li>
+        <Link to="/products">Our Products</Link>
+      </li>
+      <li>
         <Link to="/checkout">Checkout</Link>
       </li>
       <li>
@@ -25,7 +31,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 opacity-100 shadow-sm rounded-full">
+    <div className="navbar bg-red-400 opacity-100 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -60,7 +66,15 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <button onClick={handleLogin} className="btn rounded-full">
+        <div className="relative">
+          <Link to="/cart">
+            <FaCartShopping className="w-8 h-8" />
+            <span className="w-4 h-4 rounded-full bg-black absolute -top-3.5 -right-2.5 text-red-400 text-xs text-center">
+              {productNumber}
+            </span>
+          </Link>
+        </div>
+        <button onClick={handleLogin} className="btn rounded-full ml-10">
           <Link to="/login">Login</Link>
         </button>
       </div>

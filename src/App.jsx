@@ -1,5 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from 'react-router-dom';
 import Home from './pages/Home';
 import LoginWorkflow from './pages/LoginWorkflow';
 import FormFilling from './pages/FormFilling';
@@ -9,42 +15,42 @@ import EdgeCaseTesting from './pages/EdgeCaseTesting';
 import NavBar from './components/NavBar';
 import InstructionForm from './components/InstructionForm';
 import { fillAndSubmitForm } from './utils/TestJSAutomation';
-function App() {
+import ProductsPage from './pages/ProductsPage';
+// Create a layout component that uses the router context
+function AppLayout() {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
-    <Router>
+    <>
+      <nav>
+        <NavBar />
+      </nav>
       <div
-        className="container mx-auto min-h-screen"
-        style={{ padding: '1rem' }}
+        className={
+          isHomePage ? 'min-h-screen' : 'container mx-auto min-h-screen'
+        }
+        style={{ padding: isHomePage ? 0 : '1rem' }}
       >
-        {/* <h1>Web Automation with LLMs</h1> */}
-        <nav>
-          {/* <Link to="/">Home</Link> | <Link to="/login">Login</Link> |{' '}
-          <Link to="/form">Form Fill</Link> |{' '}
-          <Link to="/checkout">Checkout</Link> |{' '}
-          <Link to="/responsive">Responsive</Link> |{' '}
-          <Link to="/edge">Edge Cases</Link> */}
-          <NavBar />
-        </nav>
-        <div className="divider divider-info"></div>
         <InstructionForm />
-        <button
-          className="btn btn-error inline"
-          onClick={() => {
-            fillAndSubmitForm();
-            // handlePostStory;
-          }}
-        >
-          Do some automation
-        </button>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginWorkflow />} />
           <Route path="/form" element={<FormFilling />} />
+          <Route path="/products" element={<ProductsPage />} />
           <Route path="/checkout" element={<ShoppingCheckout />} />
           <Route path="/responsive" element={<ResponsiveValidation />} />
           <Route path="/edge" element={<EdgeCaseTesting />} />
         </Routes>
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppLayout />
     </Router>
   );
 }
