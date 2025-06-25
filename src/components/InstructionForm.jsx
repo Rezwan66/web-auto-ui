@@ -13,6 +13,7 @@ const InstructionForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // const [generatedCode, setGeneratedCode] = useState('');
   const [generatedCode, setGeneratedCode] = useState('');
+  const [savedMetricId, setSavedMetricId] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [codeCopied, setCodeCopied] = useState(false);
   const modalRef = useRef(null);
@@ -44,10 +45,12 @@ const InstructionForm = () => {
     try {
       const response = await generateScriptOllama(promptText);
       // setGeneratedCode(response?.response);
-      console.log('LLM Response:\n', response?.response);
-      console.log('LLM Generation Duration:\n', response?.total_duration);
+      console.log('LLM Response Code:\n', response?.response);
+      console.log('LLM Generation Duration:\n', response?.total_duration_ms);
       console.log('API Response Time:\n', response?.api_time_ms);
+      console.log('Stored Metric ID:\n', response?.metric_id);
       setGeneratedCode(response?.response || sampleCode);
+      setSavedMetricId(response?.metric_id);
       // setJsCode(response?.js_code);
       // console.log('LLM Response:', response.response);
       // console.log('Generated Python code:', response?.python_code);
@@ -83,8 +86,9 @@ const InstructionForm = () => {
 
   const runPythonOnBackend = async () => {
     console.log(generatedCode);
+    console.log(savedMetricId);
     try {
-      const response = await runPythonCode(generatedCode);
+      const response = await runPythonCode(generatedCode, savedMetricId);
       const data = response.data;
       // alert(`Backend Selenium ran successfully:\n${data.output}`);
       toast.success(`Backend Selenium ran successfully:\n${data.output}`);

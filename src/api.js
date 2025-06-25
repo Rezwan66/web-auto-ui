@@ -49,7 +49,10 @@ export const getFormData = async () => {
 };
 
 // Test-automation run Python Code on Backend
-export const runPythonCode = async generatedCode => {
+export const runPythonCode = async (generatedCode, metric_id) => {
   // Always return the Axios promise so the caller can catch errors
-  return API.post('/automation/run-python-code', { code: generatedCode });
+  return API.post('/automation/run-python-code', {
+    code: generatedCode,
+    metric_id,
+  });
 };
