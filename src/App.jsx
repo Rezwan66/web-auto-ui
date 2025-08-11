@@ -15,7 +15,8 @@ import EdgeCaseTesting from './pages/EdgeCaseTesting';
 import NavBar from './components/NavBar';
 import InstructionForm from './components/InstructionForm';
 import { fillAndSubmitForm } from './utils/TestJSAutomation';
-import ProductsPage from './pages/ProductsPage';
+import OurProducts from './pages/OurProducts';
+import AdditionalProductsPage from './pages/AdditionalProductsPage';
 // Create a layout component that uses the router context
 function AppLayout() {
   const location = useLocation();
@@ -37,10 +38,15 @@ function AppLayout() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginWorkflow />} />
           <Route path="/form" element={<FormFilling />} />
-          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products" element={<OurProducts />} />
+          {/* <Route path="/cart" element={<ShoppingCheckout />} /> */}
           <Route path="/checkout" element={<ShoppingCheckout />} />
           <Route path="/responsive" element={<ResponsiveValidation />} />
           <Route path="/edge" element={<EdgeCaseTesting />} />
+          <Route
+            path="/additional-products"
+            element={<AdditionalProductsPage />}
+          />
         </Routes>
       </div>
     </>

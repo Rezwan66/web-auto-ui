@@ -24,8 +24,8 @@ export function fillAndSubmitForm() {
     // Small delay to ensure DOM is ready (adjust as needed)
     // setTimeout(() => {
     try {
-      document.querySelector('[name="title"]').value = 'Sydney Sweeney';
-      document.querySelector('[name="details"]').value = 'Bazonka donks!!!';
+      document.querySelector('[name="title"]').value = 'Trip to Spain';
+      document.querySelector('[name="details"]').value = 'A great tour!!!';
       document.querySelector('#postStoryButton').click();
       console.log('Form filled and submitted.');
     } catch (error) {

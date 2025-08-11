@@ -3,7 +3,13 @@ import { useBearStore } from '../hooks/Zustand';
 import { FaCartShopping } from 'react-icons/fa6';
 
 const NavBar = () => {
-  const productNumber = useBearStore(state => state.bears);
+  // const productNumber = useBearStore(state => state.bears);
+  // Duplicate products number
+  const productNumber = useBearStore(state => state.products.length);
+  // Unique products
+  // const productNumber = useBearStore(
+  //   state => new Set(state.products.map(p => p.id)).size
+  // );
   const handleLogin = () => {
     // Add your login logic here
     console.log('Login button clicked');
@@ -28,10 +34,13 @@ const NavBar = () => {
       <li>
         <Link to="/edge">Edge Cases</Link>
       </li>
+      <li>
+        <Link to="/additional-products">Additional Products</Link>
+      </li>
     </>
   );
   return (
-    <div className="navbar bg-red-400 opacity-100 shadow-sm">
+    <div className="navbar bg-red-400 opacity-100 shadow-sm text-slate-200">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -53,7 +62,7 @@ const NavBar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow font-bold"
           >
             {navItems}
           </ul>
@@ -63,18 +72,22 @@ const NavBar = () => {
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navItems}</ul>
+        <ul className="menu menu-horizontal px-1 font-bold">{navItems}</ul>
       </div>
       <div className="navbar-end">
         <div className="relative">
-          <Link to="/cart">
+          <Link to="/checkout">
             <FaCartShopping className="w-8 h-8" />
             <span className="w-4 h-4 rounded-full bg-black absolute -top-3.5 -right-2.5 text-red-400 text-xs text-center">
               {productNumber}
             </span>
           </Link>
         </div>
-        <button onClick={handleLogin} className="btn rounded-full ml-10">
+        <button
+          data-ignore-metadata="true" // exclude from metadata
+          onClick={handleLogin}
+          className="btn rounded-full ml-10"
+        >
           <Link to="/login">Login</Link>
         </button>
       </div>

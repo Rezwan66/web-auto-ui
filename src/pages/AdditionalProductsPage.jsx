@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ProductQuickView from '../components/ProductQuickView';
 import { useLocation } from 'react-router-dom';
 
-const ProductsPage = () => {
+const AdditionalProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -50,6 +50,7 @@ const ProductsPage = () => {
             </div>
           </div>
         ) : null}
+        {/* products panel */}
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="sr-only">Products</h2>
 
@@ -63,4 +64,4 @@ const ProductsPage = () => {
     </>
   );
 };
-export default ProductsPage;
+export default AdditionalProductsPage;

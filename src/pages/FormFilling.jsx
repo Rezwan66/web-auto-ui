@@ -62,6 +62,7 @@ const FormFilling = () => {
                   {/* title */}
                   <label className="label">Title</label>
                   <input
+                    id="title"
                     type="text"
                     name="title"
                     className="input w-full"
@@ -76,6 +77,7 @@ const FormFilling = () => {
                     placeholder="Details of your story..."
                   /> */}
                   <textarea
+                    id="details"
                     name="details"
                     className="textarea w-full"
                     placeholder="Details of your story..."
@@ -91,7 +93,7 @@ const FormFilling = () => {
                   </button>
                 </fieldset>
               </form>
-              <button
+              {/* <button
                 className="btn btn-accent"
                 onClick={() => {
                   fillAndSubmitForm();
@@ -99,7 +101,7 @@ const FormFilling = () => {
                 }}
               >
                 Do some automation
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
