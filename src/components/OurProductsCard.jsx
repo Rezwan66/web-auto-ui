@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+
 const OurProductsCard = ({ product, handleAddToCart }) => {
   //   console.log(Object.keys(product));
   const {
@@ -12,6 +14,8 @@ const OurProductsCard = ({ product, handleAddToCart }) => {
     colors,
     sizes,
   } = product || {};
+  const location = useLocation();
+  console.log(location);
 
   // Helper to slugify product names
   const slugify = str =>
@@ -22,7 +26,7 @@ const OurProductsCard = ({ product, handleAddToCart }) => {
 
   return (
     <>
-      <div className="card bg-base-100 shadow-sm max-h-[461px] group">
+      <div className="card bg-base-100 shadow-sm max-h-[461px] group w-[280px]">
         <figure>
           <img
             className="h-70 w-full object-cover group-hover:opacity-75"
@@ -40,14 +44,16 @@ const OurProductsCard = ({ product, handleAddToCart }) => {
             </span>
           </p>
           <div className="card-actions justify-end">
-            <button
-              id={`product-${slugify(name)}-${id}-btn`}
-              data-product-name={name}
-              onClick={() => handleAddToCart(product)}
-              className="btn btn-primary"
-            >
-              Add to Cart
-            </button>
+            {location.pathname.includes('products') && (
+              <button
+                id={`product-${slugify(name)}-${id}-btn`}
+                data-product-name={name}
+                onClick={() => handleAddToCart(product)}
+                className="btn btn-primary"
+              >
+                Add to Cart
+              </button>
+            )}
           </div>
         </div>
       </div>

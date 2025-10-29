@@ -1,4 +1,27 @@
+import { useEffect, useState } from 'react';
+import OurProductsCard from '../components/OurProductsCard';
+import Marquee from 'react-fast-marquee';
+
 const Home = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  // Adding to cart
+  // const addProduct = useBearStore(state => state.addProduct);
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const data = await fetch('./products.json');
+        const res = await data.json();
+        console.log(res);
+        setProducts(res);
+      } catch (error) {
+        console.error('Error loading products:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProducts();
+  }, []);
   return (
     <>
       <div className="flex flex-col">
@@ -30,26 +53,22 @@ const Home = () => {
           <h2 className="text-3xl font-bold mb-6 text-slate-300">
             Featured Products
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="">
             {/* Add featured products or other content here */}
-            <div className="card bg-base-100 shadow-xl">
+            {/* <div className="card bg-base-100 shadow-xl">
               <div className="card-body">
                 <h3 className="card-title">Product 1</h3>
                 <p>Description of product 1</p>
               </div>
-            </div>
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body">
-                <h3 className="card-title">Product 2</h3>
-                <p>Description of product 2</p>
-              </div>
-            </div>
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body">
-                <h3 className="card-title">Product 3</h3>
-                <p>Description of product 3</p>
-              </div>
-            </div>
+            </div> */}
+            <Marquee pauseOnHover autoFill>
+              {products &&
+                products.map(p => (
+                  <div className="flex justify-between mx-2 items-center">
+                    <OurProductsCard key={p.id} product={p} />
+                  </div>
+                ))}
+            </Marquee>
           </div>
         </div>
       </div>
